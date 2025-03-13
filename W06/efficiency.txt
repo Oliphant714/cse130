@@ -1,0 +1,4 @@
+Data Set Size - 1000
+Constant: O(1) : Constant
+Logarithmic: O(Log(n))(base 2) : 10 
+    Cut the size of the data in half each time

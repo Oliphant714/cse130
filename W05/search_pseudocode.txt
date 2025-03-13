@@ -1,0 +1,18 @@
+START
+FUNCTION search_list(list, value):
+    SET left = 0
+    SET right = length of list - 1
+
+    WHILE left <= right:
+        SET middle = (left + right) // 2
+        SET mid_value = list[middle]
+
+        IF mid_value == value:
+            RETURN middle
+        ELSE IF mid_value < value:
+            SET left = middle + 1
+        ELSE:
+            SET right = middle - 1
+
+    RETURN -1  // Value not found
+END

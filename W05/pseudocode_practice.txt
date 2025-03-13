@@ -1,0 +1,5 @@
+START
+FOR i <-- end to beginning
+    FOR a <-- beginning to i
+        If array(i) < array(a)
+            swap spot a and a+1
