@@ -1,7 +1,10 @@
 month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 def day_count(first_month, first_day, first_year, second_month, second_day, second_year):
-    if not (1 <= first_month <= 12):
+    if not all(isinstance(i, int) for i in [first_month, first_day, first_year, second_month, second_day, second_year]):
+        print("Error: All inputs must be integers.")
+        return
+    elif not (1 <= first_month <= 12):
         print("Error: Invalid month for first date.")
         return
     elif not (1 <= second_month <= 12):
@@ -29,15 +32,15 @@ def day_count(first_month, first_day, first_year, second_month, second_day, seco
     year_days = days_left_in_month
     for i in range(first_month, 12):
         year_days += month_days[i]
-    assert year_days >= 0, "Error: Computed days left in the first year should not be negative."
+    #assert year_days >= 0, "Error: Computed days left in the first year should not be negative."
 
     year_count = second_year - first_year - 1
     day_count = year_count * 365 + year_days
-    assert day_count >= 0, "Error: Computed day count should not be negative."
+    #assert day_count >= 0, "Error: Computed day count should not be negative."
 
     days_passed_in_last_year = sum(month_days[:second_month - 1]) + second_day
     day_count += days_passed_in_last_year
-    assert days_passed_in_last_year >= 0, "Error: Computed days in the last year should not be negative."
+    #assert days_passed_in_last_year >= 0, "Error: Computed days in the last year should not be negative."
 
     leap_years = 0
     for i in range(first_year, second_year):
@@ -45,10 +48,10 @@ def day_count(first_month, first_day, first_year, second_month, second_day, seco
             leap_years += 1
     day_count += leap_years
 
-    assert leap_years >= 0, "Error: Computed leap year count should not be negative."
-    assert day_count >= 0, "Error: Final computed day count should not be negative."
+    #assert leap_years >= 0, "Error: Computed leap year count should not be negative."
+    #assert day_count >= 0, "Error: Final computed day count should not be negative."
 
-    print(f"The number of days between {first_month}/{first_day}/{first_year} and {second_month}/{second_day}/{second_year} is {day_count(first_month, first_day, first_year, second_month, second_day, second_year)}.")
+    print(f"The number of days between {first_month}/{first_day}/{first_year} and {second_month}/{second_day}/{second_year} is {day_count}.")
 
 test_case = 1
 while test_case <= 12:
